@@ -1,0 +1,59 @@
+media:
+  input: src/media
+  output: /media
+content:
+  - name: docs
+    label: Documentation
+    type: collection
+    path: src/docs
+    filename: "{primary}.md"
+    view:
+      fields: [ title, ordered ]
+      primary: title
+      sort: [ order, title ]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: string
+        options:
+          maxlength: 180
+      - name: order
+        label: Order
+        type: number
+      - name: body
+        label: Body
+        type: rich-text
+  - name: homepage
+    label: Home Page
+    path: src/index.njk
+    type: file
+    fields:
+      - name: layout
+        type: string
+        hidden: true
+        default: layouts/base.njk
+      - name: promotion
+        label: Promotion
+        type: object
+        fields:
+          - name: text
+            label: Text
+            type: string
+          - name: url
+            label: URL
+            type: string
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: description
+        label: Description
+        type: string
+      
